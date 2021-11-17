@@ -1,0 +1,4 @@
+{
+  "serverPort": 5000,
+  "dataBaseURL": "mongodb+srv://dm3iy:q12345678@cloud.y6gfi.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+}

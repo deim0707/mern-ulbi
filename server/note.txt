@@ -1,3 +1,34 @@
 config -
 
 mongoose - система управления бд
+
+bcryptjs - хешируем пароль
+
+express-validator - проверяем, что пришли валидные данные
+
+БД в веб-интерфейсе монги:
+https://youtu.be/P-EW3ErBQkc?list=PL6DxKON1uLOGd4E6kG6d5K-tsTFj-Deln&t=180
+добавили свой ip адрес в whitle-list
+добавили пользователя и пароль
+пользователь: dm3iy
+пароль: q12345678
+
+конфигурация БД:
+связь между таблицами - один ко многим (один пользователь может иметь много файлов. один файл - одного пользователя)
+interface User {
+    id: ObjectID
+    email: String
+    password: String
+    diskSpace: Number default 1024**3*10 // доступно места на диске
+    usedSpace: Number default 0 // использовано места на диске
+    avatar: String
+}
+interface File {
+    id: ObjectId
+    name: String
+    type: String // расширение или папка
+    access_link: Strinf // ссылка доступа к файлу\папке
+    size: Number
+    user_id: Object FC // внешний ключ на пользователя, кому принадлежит файл
+    parent_id: Object FC // внешний ключ на родителя. если папка\файл вложены
+}
