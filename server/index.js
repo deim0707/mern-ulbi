@@ -3,11 +3,14 @@ const mongoose = require('mongoose');
 const config = require('config');
 
 const authRouter = require('./routes/auth.routes.js')
+const corsMiddleware = require('./middlewares/cors.middleware.js')
 
 const app = express(); // инициализируем экспресс
 
 // без этого мидлваре экспресс не парсит JSON
-app.use(express.json())
+app.use(express.json());
+// подключаем мидлваре, который отключает корс
+app.use(corsMiddleware);
 // регистрируем обработчик путей
 app.use('/api/auth', authRouter);
 

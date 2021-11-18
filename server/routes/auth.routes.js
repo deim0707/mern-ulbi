@@ -4,6 +4,7 @@ const {check, validationResult} = require('express-validator');
 const config = require('config');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User.js');
+const authMiddleware = require('../middlewares/authorization.middleware.js');
 
 const router = new Router();
 
@@ -79,6 +80,36 @@ router.post(
             res.send({message: "Server error", error: e})
         }
     })
+
+router.get(
+    '/auth',
+    authMiddleware,
+    async (req, res) => {
+        try {
+            // req.user.id - мидлвар из второго параметра добавил поле user в запрос
+            const user = await User.findOne({_id: req.user.id})
+            // создаём токен заново и отправляем пользователя в ответ
+            // Первый парметр объект с полем - id - объект с данными, которым помещаем в токен, в нашем случае - айди пользователя.
+            // Вторым параметром, секретный код, по которому идёт шифрование. Это любая рандомная строка
+            // Третьем параметров объект expiresIn - указывает, сколько живет токен
+            const token = jwt.sign({id: user.id}, config.get("secretKeyForJWT"), {expiresIn: "1h"});
+
+            return res.json({
+                token,
+                user: {
+                    id: user.id,
+                    email: user.email,
+                    diskSpace: user.diskSpace,
+                    usedSpace: user.usedSpace,
+                    avatar: user.avatar,
+                }
+            })
+        } catch (e) {
+            console.log(e);
+            res.send({message: "Server error", error: e})
+        }
+    })
+
 
 
 module.exports = router;
