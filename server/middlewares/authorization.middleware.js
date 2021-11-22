@@ -17,8 +17,7 @@ module.exports = (req,res,next) => {
         }
         // декодируем токен
         const decodedToken = jwt.verify(token, config.get("secretKeyForJWT"));
-        // ЗДЕСЬ мы проапдейтили запрос. положили в айди декодированный токен пользователя
-        console.log("decodedToken",decodedToken)
+        // ЗДЕСЬ мы проапдейтили запрос. положили в айди декодированный токен пользователя. потом используем его в других файлах
         req.user = decodedToken;
         next();
 

@@ -2,4 +2,4 @@
 
 
 
-https://youtu.be/sqou7Zlj264?list=PL6DxKON1uLOGd4E6kG6d5K-tsTFj-Deln&t=473
+https://www.youtube.com/watch?v=mIGyDd9B6Ug&list=PL6DxKON1uLOGd4E6kG6d5K-tsTFj-Deln&index=11

@@ -4,7 +4,9 @@ const {check, validationResult} = require('express-validator');
 const config = require('config');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User.js');
-const authMiddleware = require('../middlewares/authorization.middleware.js');
+const File = require('../models/File.js');
+const authMiddleware = require('../middlewares/authorization.middleware.js'); // идентифицирует пользователя по токену
+const fileService = require('../services/file.service'); // понадобится, чтобы при регистрации пользователя создавалась папка для него
 
 const router = new Router();
 
@@ -35,6 +37,8 @@ router.post(
             const user = new User({email, password: hashPassword});
             // сохраняем пользователя в БД
             await user.save();
+            // создаём папку (где хранить файлы) с айди пользователя
+            await fileService.createDirectory(new File({user: user.id, name: ''}));
             return res.json({message: "User was created"});
 
         } catch (e) {

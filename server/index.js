@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const config = require('config');
 
 const authRouter = require('./routes/auth.routes.js')
+const fileRouter = require('./routes/file.route')
 const corsMiddleware = require('./middlewares/cors.middleware.js')
 
 const app = express(); // инициализируем экспресс
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use(corsMiddleware);
 // регистрируем обработчик путей
 app.use('/api/auth', authRouter);
+app.use('/api/files', fileRouter);
 
 const PORT = config.get('serverPort');
 
@@ -24,7 +26,7 @@ const startServer = async () => {
         // Подключение к бд
         await mongoose.connect(DBUrl)
 
-        app.listen(PORT, (req, res) => {
+        app.listen(PORT, () => {
             console.log(`Server started on port ${PORT}. Hurrah!`)
         })
     } catch (e) {
