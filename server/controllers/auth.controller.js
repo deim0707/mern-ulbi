@@ -1,10 +1,10 @@
 const {validationResult} = require("express-validator");
-const User = require("../models/User.js");
+const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const config = require("config");
 const fileService = require("../services/file.service"); // понадобится, чтобы при регистрации пользователя создавалась папка
 const File = require("../models/File.js");
-const jwt = require("jsonwebtoken");
-const config = require("config");
+const User = require("../models/User.js");
 
 class AuthController {
     async registration(req, res) {

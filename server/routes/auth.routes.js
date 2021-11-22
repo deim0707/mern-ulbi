@@ -15,8 +15,5 @@ router.post('/login', authController.login);
 router.get('/auth', authMiddleware,authController.authorization);
 
 
-
-
-
 module.exports = router;
 
