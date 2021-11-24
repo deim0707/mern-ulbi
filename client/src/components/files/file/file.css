@@ -1,0 +1,27 @@
+.file {
+    padding-top: 5px;
+    border-bottom: 1px solid #566885;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr 1fr;
+}
+
+.file:hover {
+    background-color: #f1eaea;
+    cursor: pointer;
+}
+
+.file .logo {
+    grid-column-start: 1;
+}
+
+.file .name {
+    grid-column-start: 2;
+}
+
+.file .date {
+    grid-column-start: 3;
+}
+
+.file .size {
+    grid-column-start: 5;
+}

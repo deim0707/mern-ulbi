@@ -1,0 +1,12 @@
+.filesWrapper {
+    padding: 10px 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.filesWrapper .buttons {
+    width: 250px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+}

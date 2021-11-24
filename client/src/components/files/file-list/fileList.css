@@ -1,0 +1,17 @@
+.header {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr 1fr;
+}
+
+.header .name {
+    grid-column-start: 2;
+}
+
+.header .date {
+    grid-column-start: 3;
+}
+
+.header .size {
+    grid-column-start: 5;
+}
+

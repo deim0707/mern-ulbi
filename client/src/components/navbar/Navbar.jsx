@@ -3,25 +3,32 @@ import {useDispatch} from "react-redux";
 import {NavLink} from "react-router-dom";
 import {routes} from "../../shared/routes";
 import {logout} from "../../reducers/user.slice";
+import "./navbar.css";
+
+const TITLE_TEXT = 'CLOUD';
+const REGISTRATION_TEXT = 'Регистрация';
+const ENTRY_TEXT = 'Войти';
+const EXIT_TEXT = 'Выход';
 
 const Navbar = ({isAuthorizationUser}) => {
     const dispatch = useDispatch();
 
     const noAuthorizationUserButton = [
-        <Button key="1" type="default">
-            <NavLink to={routes.login}>Войти</NavLink>
+        <Button key={ENTRY_TEXT} type="default">
+            <NavLink to={routes.login}>{ENTRY_TEXT}</NavLink>
         </Button>,
-        <Button key="2" type="default">
-            <NavLink to={routes.registration}>Регистрация</NavLink>
+        <Button key={REGISTRATION_TEXT} type="default">
+            <NavLink to={routes.registration}>{REGISTRATION_TEXT}</NavLink>
         </Button>,
     ];
     const authorizationUserButton = [
-        <Button key="1" type="default" onClick={()=>dispatch(logout())}>Выход</Button>
+        <Button key={EXIT_TEXT} type="default" onClick={()=>dispatch(logout())}>{EXIT_TEXT}</Button>
     ];
 
     return (
         <PageHeader
-            title='Заголовок123'
+            title={TITLE_TEXT}
+            className="navbar"
             extra={isAuthorizationUser ? authorizationUserButton : noAuthorizationUserButton}
         />
     );

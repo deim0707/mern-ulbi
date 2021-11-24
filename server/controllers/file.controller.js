@@ -41,7 +41,7 @@ class FileController {
             // родителя из квери
             // в ответе будет json с файлами\папками (полученными с бека)
             const files = await File.find({user: req.user.id, parent: req.query.parent});
-            return res.json({files});
+            return res.json(files);
 
         } catch (e) {
             console.log('Error in getFile', e);

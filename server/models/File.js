@@ -6,6 +6,7 @@ const File = new Schema({
     access_link: {type: String},
     size: {type: Number, default: 0},
     path: {type: String, default: ''},
+    date: {type: Date, default: Date.now()},
     // Оба поля ниже ссылаются на другую запись в БД. ref - на какую модель они ссылаются
     user: {type: ObjectId, ref: 'User'},
     parent: {type: ObjectId, ref: 'File'},

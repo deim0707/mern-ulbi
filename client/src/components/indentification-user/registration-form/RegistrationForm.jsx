@@ -1,5 +1,5 @@
-import LoginRegistrationForm from "../../shared-components/login-registration-form/LoginRegistrationForm";
-import ApiService from "../../services/api.service";
+import LoginRegistrationForm from "../../../shared-components/login-registration-form/LoginRegistrationForm";
+import ApiService from "../../../services/api.service";
 
 const RegistrationForm = () => {
     const omSubmit = (user) => {

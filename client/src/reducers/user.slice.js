@@ -2,7 +2,7 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import ApiService from "../services/api.service";
 import {removeToken, setToken} from "../shared/localStorageUtils";
 
-const NAME_STORE = 'user';
+export const NAME_USER_STORE = 'user';
 
 const initialState = {
     currentUser: {},
@@ -10,17 +10,17 @@ const initialState = {
 }
 
 export const getUserOnLogin = createAsyncThunk(
-    `${NAME_STORE}/getUserOnLogin`,
+    `${NAME_USER_STORE}/getUserOnLogin`,
     async (user) => ApiService.UserApi.login(user)
 );
 
 export const getUserOnAuthorization = createAsyncThunk(
-    `${NAME_STORE}/getUserOnAuthorization`,
+    `${NAME_USER_STORE}/getUserOnAuthorization`,
     async () => ApiService.UserApi.authorization()
 );
 
 const userSlice = createSlice({
-    name: NAME_STORE,
+    name: NAME_USER_STORE,
     initialState,
     reducers: {
         logout: (state) => {
@@ -56,7 +56,7 @@ const userSlice = createSlice({
 
 export const {logout} = userSlice.actions;
 
-export const selectIsAuthorizationUser = state => state[NAME_STORE].isAuthorizationUser;
+export const selectIsAuthorizationUser = state => state[NAME_USER_STORE].isAuthorizationUser;
 export const selectCurrentUser = state => state.currentUser;
 
 export default userSlice.reducer;
