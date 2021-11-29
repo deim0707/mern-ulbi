@@ -3,7 +3,7 @@ import {ReactComponent as FileLogo} from '../../../assets/icon/file.svg';
 import "./file.css"
 
 const File = ({name, type, size, date}) => {
-    const Icon = type === 'dir' ? <FolderLogo/> : <FileLogo/>
+    const Icon = type === 'dir' ? <FolderLogo/> : <FileLogo/>;
     return (
         <div className="file">
             <div className="logo">{Icon}</div>

@@ -1,4 +1,4 @@
-import LoginRegistrationForm from "../../../shared-components/login-registration-form/LoginRegistrationForm";
+import LoginRegistrationForm from "../../shared-components/login-registration-form/LoginRegistrationForm";
 import ApiService from "../../../services/api.service";
 
 const RegistrationForm = () => {

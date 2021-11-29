@@ -1,5 +1,5 @@
 import {useDispatch} from "react-redux";
-import LoginRegistrationForm from "../../../shared-components/login-registration-form/LoginRegistrationForm";
+import LoginRegistrationForm from "../../shared-components/login-registration-form/LoginRegistrationForm";
 import {getUserOnLogin} from "../../../reducers/user.slice";
 
 const LoginForm = () => {
