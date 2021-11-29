@@ -1,7 +1,7 @@
-import "./fileList.css";
 import {useSelector} from "react-redux";
 import {selectFiles} from "../../../reducers/file.slice";
 import File from "../file/File";
+import "./fileList.css";
 
 const FileList = () => {
     const files = useSelector(selectFiles);
@@ -14,13 +14,9 @@ const FileList = () => {
             </div>
             {
                 files.map(file => {
-                    const {name, type, size, date, _id} = file;
                     return <File
-                        key={_id}
-                        name={name}
-                        type={type}
-                        size={size}
-                        date={date.slice(0,10)}
+                        key={file._id}
+                        file={file}
                     />
                 })
             }

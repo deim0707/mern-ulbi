@@ -1,3 +1,8 @@
 .navbar {
     background-color: #ede6e6 !important;
 }
+
+.navbar a {
+    cursor: default !important;
+    pointer-events: none !important;
+}
