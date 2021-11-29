@@ -14,6 +14,11 @@ export const getFiles = createAsyncThunk(
     async (directoryId) => ApiService.FileApi.getFiles(directoryId)
 );
 
+export const createDirectory = createAsyncThunk(
+    `${NAME_FILE_STORE}/createDirectory`,
+    async (directoryData) => ApiService.FileApi.createDirectory(directoryData)
+);
+
 const fileSlice = createSlice({
     name: NAME_FILE_STORE,
     initialState,
@@ -29,6 +34,11 @@ const fileSlice = createSlice({
         builder.addCase(getFiles.fulfilled,
             (state, {payload}) => {
                 state.files = payload;
+            })
+
+        builder.addCase(createDirectory.fulfilled,
+            (state, {payload}) => {
+                state.files = [...state.files, payload];
             })
     }
 });
