@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const config = require('config');
+const fileUpload = require('express-fileupload');
 
 const authRouter = require('./routes/auth.routes.js')
 const fileRouter = require('./routes/file.route')
@@ -8,6 +9,8 @@ const corsMiddleware = require('./middlewares/cors.middleware.js')
 
 const app = express(); // инициализируем экспресс
 
+//помогает работать с загрузкой файлов
+app.use(fileUpload({}));
 // без этого мидлваре экспресс не парсит JSON
 app.use(express.json());
 // подключаем мидлваре, который отключает корс

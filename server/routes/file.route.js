@@ -7,5 +7,6 @@ const router = new Router();
 // второй параметр - мидлваре - нужен для авторизации пользователья
 router.post('', authMiddleware, fileController.createDir);
 router.get('', authMiddleware, fileController.getFile);
+router.post('/upload', authMiddleware, fileController.uploadFile);
 
 module.exports = router;
